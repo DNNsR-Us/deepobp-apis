@@ -18,7 +18,6 @@ tStr = t.strftime("%Y-%m-%dT00:00:00-00:00")
 dStr = t.strftime("%Y-%m-%d")
 
 url = ('https://newsapi.org/v2/everything?'
-#       'q=covid19&'
        'q=covid-19&'
        'sources=cnn,rueters,engadget,fox-news,the-verge,polygon,Androidpolice.com,9to5mac.com,ign,techcrunch,Dailymail.co.uk,the-next-web,9to5google.com,Seekingalpha.com,&'
        'from='+tStr+'&'
