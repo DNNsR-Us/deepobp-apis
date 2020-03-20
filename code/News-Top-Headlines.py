@@ -10,7 +10,7 @@ import json
 import http.client
 from datetime import datetime
 
-dStr = datetime.today().strftime("%Y-%m-%d")
+dStr = datetime.today().strftime("%Y-%m-%d-%H-%M")
 
 url = ('https://newsapi.org/v2/top-headlines?'
        'country=us&'
