@@ -12,11 +12,13 @@ from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 superbowlDate = '2020-02-02'
-#t = datetime.fromisoformat(superbowlDate).timestamp() - timedelta(months=1)
+# t = datetime.fromisoformat(superbowlDate).timestamp() - timedelta(months=1)
 # t = datetime(2020, 2, 2) - relativedelta(months=1)
-t = datetime(2020, 2, 6)
+# t = datetime(2020, 2, 6)
+t = datetime.today()
 tStr = t.strftime("%Y-%m-%dT00:00:00-00:00")
-print('tStr is '+tStr)
+# print('tStr is '+tStr)
+dStr = t.strftime("%Y-%m-%d")
 
 url = ('https://newsapi.org/v2/everything?'
 #       'q=superbowl&'
@@ -27,7 +29,7 @@ url = ('https://newsapi.org/v2/everything?'
        'apiKey=15c5e5b04d4d4404a674174a3b21b365')
 
 response = requests.get(url, verify=False)
-print(response.json())
+# print(response.json())
 
-with open('/data/deepobp/data/news/newsapi_nfl.json', 'a+', encoding='utf-8') as f:
+with open('/data/deepobp/data/news/newsapi_nfl-'+dStr+'.json', 'w', encoding='utf-8') as f:
     json.dump(response.json(), f, ensure_ascii=False, indent=4)

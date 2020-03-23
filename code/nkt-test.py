@@ -14,9 +14,9 @@ from datetime import datetime, timedelta
 
 #t = t-2
 d = datetime.today() - timedelta(days=2)
-print(d)
+# print(d)
 dStr = d.strftime("%Y-%m-%d")
-print(dStr)
+# print(dStr)
 
 url = ('https://newsapi.org/v2/everything?'
        'q=technology&'
@@ -26,13 +26,13 @@ url = ('https://newsapi.org/v2/everything?'
        'apiKey=15c5e5b04d4d4404a674174a3b21b365')
 
 response = requests.get(url, verify=False)
-print(response.json())
+# print(response.json())
 
-with open('/data/deepobp/data/news/newsapi_technology.json', 'a+', encoding='utf-8') as f:
+with open('/data/deepobp/data/news/newsapi_technology-'+dStr+'.json', 'w', encoding='utf-8') as f:
     json.dump(response.json(), f, ensure_ascii=False, indent=4)
-    
+
 #----------------------------------------------------------------------------------------------------------
-    
+
 #t = t-2
 
 url = ('https://api.weather.gov/alerts?'
