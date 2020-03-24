@@ -14,9 +14,9 @@ from datetime import datetime, timedelta
 
 #t = t-2
 d = datetime.today() - timedelta(days=2)
-print(d)
+# print(d)
 dStr = d.strftime("%Y-%m-%d")
-print(dStr)
+# print(dStr)
 
 url = ('https://newsapi.org/v2/everything?'
        'q=technology&'
@@ -25,14 +25,14 @@ url = ('https://newsapi.org/v2/everything?'
        'pageSize=100&'
        'apiKey=15c5e5b04d4d4404a674174a3b21b365')
 
-#response = requests.get(url, verify=False)
-#print(response.json())
+response = requests.get(url, verify=False)
+# print(response.json())
 
-#with open('/data/deepobp/data/news/newsapi_tech_test.json', 'a+', encoding='utf-8') as f:
-#    json.dump(response.json(), f, ensure_ascii=False, indent=4)
-    
+with open('/data/deepobp/data/news/newsapi_technology-'+dStr+'.json', 'w', encoding='utf-8') as f:
+    json.dump(response.json(), f, ensure_ascii=False, indent=4)
+
 #----------------------------------------------------------------------------------------------------------
-    
+
 #t = t-2
 
 url = ('https://api.weather.gov/alerts?'
@@ -40,21 +40,7 @@ url = ('https://api.weather.gov/alerts?'
        'limit=500&'
        'cursor=cursor')
 response = requests.get(url, verify=False)
-# print(response.json())
-testFile = '/data/deepobp/code/NWS-alerts.json'
+print(response.json())
 
-with open(testFile) as json_file: 
-    data = json.load(json_file) 
-      
-    temp = data['articles'] 
-  
-    # python object to be appended 
-    y = response.json()
-  
-    # appending data to testFile
-    temp.append(y) 
-      
-write_json(data)
-
-#with open('/data/deepobp/code/NWS-alerts.json', 'a+', encoding='utf-8') as f:
-#    json.dump(response.json(), f, ensure_ascii=False, indent=4)
+with open('/data/deepobp/code/NWS-alerts.json', 'a+', encoding='utf-8') as f:
+    json.dump(response.json(), f, ensure_ascii=False, indent=4)
